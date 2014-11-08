@@ -1,2 +1,2 @@
 # Read data from sensors
-*/5 * * * *	www-data	/usr/lib/RasPiCam/RasPiCamReader.sh
+*/5 * * * * www-data /usr/lib/RasPiCam/RasPiCamReader.sh
