@@ -16,9 +16,11 @@ if [ -e $RASPICAM_VIDEO_DEVICE ]; then
 		cat $TMPDIR/snapshot.jpg
 	else
 		echo -ne "Status: 404 Not Found\nContent-type: text/html\n\n"
-		echo "<h1>Error grabbing image</h1>\nCommand was: <pre>$COMMAND</pre>, output was: <pre>"
+		printf "<h1>Error grabbing image</h1>\nCommand was: <pre>$COMMAND</pre>output was: <pre>"
 		cat $TMPDIR/snapshot.err
-		echo "</pre>"
+		printf "</pre>Possible video sevices are:\n<pre>"
+		ls /dev/video*
+		printf "</pre>\n"
 	fi
 
 	# Remove temporary files
