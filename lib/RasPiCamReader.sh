@@ -16,6 +16,7 @@ MDIR="$(grep -vE "^\s*#" /etc/apache2/conf.d/RasPiCam.conf | grep -w RASPICAM_RA
 
 for sensor in /sys/bus/w1/devices/[0-9]*; do
 	SN="$(basename $sensor)"
-	tail -n 1 "$sensor/w1_slave" | grep -o '[0-9]*$' | sed 's/\([0-9][0-9][0-9]$\)/.\1/' > "$MDIR/$SN.cvs"
+	TEMPERATURE="$(tail -n 1 "$sensor/w1_slave" | grep -o '[0-9]*$' | sed 's/\([0-9][0-9][0-9]$\)/.\1/')"
+	printf "$TIMESTAMP,$TEMPERATURE\n" >> "$MDIR/$SN.cvs"
 done
 
