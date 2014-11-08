@@ -1,17 +1,10 @@
 #!/bin/bash
 
-if [ -f $RASPICAM_RAW_MEASUREMENTS ]; then
+if [ -f $RASPICAM_VIDEO_DEVICE ]; then
 
 	# Set up temporary directory
 	TMPDIR="/tmp/RASPICAM.$RANDOM.tmp"
 	mkdir $TMPDIR
-
-	# Generate gnuplot input file
-cat << EndPlotScript > $TMPDIR/plot.in
-set terminal png size 800,600 enhanced font "Helvetica,14"
-set output "$TMPDIR/output.png"
-plot "$RASPICAM_RAW_MEASUREMENTS"	
-EndPlotScript
 
 	# Run vgrabbj
 	vgrabbj -d $RASPICAM_VIDEO_DEVICE -f $TMPDIR/snapshot.jpg 2> $TMPDIR/snapshot.err > /dev/null
