@@ -14,7 +14,7 @@ if [ -f $RASPICAM_RAW_MEASUREMENTS ]; then
 cat << EndPlotScript > $TMPDIR/plot.in
 set terminal png size 800,600 enhanced font "Helvetica,14"
 set output "$TMPDIR/output.png"
-plot "$RASPICAM_RAW_MEASUREMENTS"	
+plot "$RASPICAM_RAW_MEASUREMENTS" $RASPICAM_PLOT_STYLE	
 EndPlotScript
 
 	# Run gnuplot
