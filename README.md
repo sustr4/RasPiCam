@@ -14,7 +14,7 @@ These packages must be installed for all features to work properly:
 Important notes
 ---------------
 
-user www-data must be member of group video if you wish to donwload pictires from WebCam:
+user `www-data` must be member of group `video` if you wish to download pictures from your WebCam:
 
 `sudo usermod -a -G video www-data`
 
