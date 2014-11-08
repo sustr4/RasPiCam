@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#Prevent caching
+printf "Cache-Control: no-cache, no-store, must-revalidate\nPragma: no-cache\nExpires: 0\n"
+
+
 if [ -f $RASPICAM_RAW_MEASUREMENTS ]; then
 
 	# Set up temporary directory

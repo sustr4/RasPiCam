@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#Prevent caching
+printf "Cache-Control: no-cache, no-store, must-revalidate\nPragma: no-cache\nExpires: 0\n"
+
+
 if [ -e $RASPICAM_VIDEO_DEVICE ]; then
 
         # Set up temporary directory
