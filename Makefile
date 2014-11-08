@@ -10,5 +10,5 @@ install:
 	install -o root -g root -m 440 cron/RasPiCam.cron /etc/cron.d/RasPiCam.cron
 	-mkdir -p /usr/lib/RasPiCam
 	-chown root:root /usr/lib/RasPiCam
-	install -o root -g root -m 775 lib/RasPiCamReader.sh
+	install -o root -g root -m 775 lib/RasPiCamReader.sh /usr/lib/RasPiCam/RasPiCamReader.sh
 	install config/RasPiCam.conf /etc/apache2/conf.d/RasPiCam.conf
