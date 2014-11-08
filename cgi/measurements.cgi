@@ -17,13 +17,13 @@ EndPlotScript
 	gnuplot $TMPDIR/plot.in
 
 	# Return image
-	echo -e "Status: 200 OK\nContent-type: image/png\n\n"
+	echo -ne "Status: 200 OK\nContent-type: image/png\n\n"
 	cat $TMPDIR/output.png
 
 	# Remove temporary files
 	rm -rf $TMPDIR
 else
-	echo -e "Status: 404 Not Found\nContent-type: text/html\n\n"
+	echo -ne "Status: 404 Not Found\nContent-type: text/html\n\n"
 	echo "<h1>Error</h1>"
 fi
 
