@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ -f $RASPICAM_VIDEO_DEVICE ]; then
+if [ -e $RASPICAM_VIDEO_DEVICE ]; then
 
 	# Set up temporary directory
 	TMPDIR="/tmp/RASPICAM.$RANDOM.tmp"
