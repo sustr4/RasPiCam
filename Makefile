@@ -1,6 +1,8 @@
 all:
 	echo All scripts, no build. Run 'make install' to install into Raspbian
 install:
+	-mkdir -p /usr/lib/cgi-bin
+	-chown www-data:www-data /usr/lib/cgi-bin
 	install -o www-data -g www-data -m 775 cgi/measurements_raw.cgi /usr/lib/cgi-bin/measurements_raw.cgi
 	install -o www-data -g www-data -m 775 cgi/measurements.cgi /usr/lib/cgi-bin/measurements.cgi
 	install -o www-data -g www-data -m 775 cgi/image.cgi /usr/lib/cgi-bin/image.cgi
