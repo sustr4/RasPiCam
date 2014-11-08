@@ -8,7 +8,7 @@ if [ -f $RASPICAM_RAW_MEASUREMENTS ]; then
 
 	# Generate gnuplot input file
 cat << EndPlotScript > $TMPDIR/plot.in
-set terminal png size 400,300 enhanced font "Helvetica,20"
+set terminal png size 800,600 enhanced font "Helvetica,14"
 set output "$TMPDIR/output.png"
 plot "$RASPICAM_RAW_MEASUREMENTS"	
 EndPlotScript
