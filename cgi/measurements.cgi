@@ -6,6 +6,11 @@ printf "Cache-Control: no-cache, no-store, must-revalidate\nPragma: no-cache\nEx
 #TODO Log levels
 #TODO Query strings
 
+
+#Sensor from Query String
+SENSOR="$(echo "$QUERY_STRING" | sed 's/sensor=\([^\\?^;]*\).*/\1/')"
+RASPICAM_RAW_MEASUREMENTS="$RASPICAM_RAW_DIR/$QUERY_STRING.csv"
+
 if [ -f $RASPICAM_RAW_MEASUREMENTS ]; then
 
 	# Set up temporary directory
@@ -30,8 +35,8 @@ EndPlotScript
 	rm -rf $TMPDIR
 else
 	echo -ne "Status: 404 Not Found\nContent-type: text/html\n\n"
-	echo "<h1>Error</h1>"
+	echo "<h1>Error</h1> log file <code>$RASPICAM_RAW_MEASUREMENTS</code> does not exist"
 fi
 
-logger RasPiCam: $REMOTE_ADDR getting measurements with query string \"$QUERY_STRING\"
+logger RasPiCam: $REMOTE_ADDR getting measurements with query string \"$QUERY_STRING\, requesting sensor $SENSOR"
 
