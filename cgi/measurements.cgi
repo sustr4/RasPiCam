@@ -9,10 +9,15 @@ printf "Cache-Control: no-cache, no-store, must-revalidate\nPragma: no-cache\nEx
 
 #Sensor from Query String
 SENSOR=`echo "$QUERY_STRING" | sed 's/sensor=\([^\\?^;]*\).*/\1/'`
-SIZE=`echo "$QUERY_STRING" | sed 's/size=\([0-9]+x[0-9]+\).*/\1/'`
+SIZE=`echo "$QUERY_STRING" | grep -oE 'size=[0-9x]+' | sed 's/size=\([0-9]*\)x\([0-9]*\)/\1,\2/'`
 RASPICAM_RAW_MEASUREMENTS="$RASPICAM_RAW_DIR/$SENSOR.csv"
 
-if [ -f $RASPICAM_RAW_MEASUREMENTS ]; then
+#Use default size if unspecified
+if [ "$SIZE" == "" ]; then
+	SIZE="800,600"
+fi
+
+if [ -f "$RASPICAM_RAW_MEASUREMENTS" ]; then
 
 	# Set up temporary directory
 	TMPDIR="/tmp/RASPICAM.$RANDOM.tmp"
@@ -20,7 +25,7 @@ if [ -f $RASPICAM_RAW_MEASUREMENTS ]; then
 
 	# Generate gnuplot input file
 cat << EndPlotScript > $TMPDIR/plot.in
-set terminal png size 800,600 enhanced font "Helvetica,14"
+set terminal png size $SIZE enhanced font "Helvetica,14"
 set datafile separator ","
 set xdata time
 set timefmt "%Y%m%d_%H%M%S"
