@@ -9,6 +9,7 @@ printf "Cache-Control: no-cache, no-store, must-revalidate\nPragma: no-cache\nEx
 
 #Sensor from Query String
 SENSOR=`echo "$QUERY_STRING" | sed 's/sensor=\([^\\?^;]*\).*/\1/'`
+SIZE=`echo "$QUERY_STRING" | sed 's/size=\([0-9]+x[0-9]+\).*/\1/'`
 RASPICAM_RAW_MEASUREMENTS="$RASPICAM_RAW_DIR/$SENSOR.csv"
 
 if [ -f $RASPICAM_RAW_MEASUREMENTS ]; then
@@ -41,5 +42,5 @@ else
 	echo "<h1>Error</h1> log file <code>$RASPICAM_RAW_MEASUREMENTS</code> as requested in your query <code>$QUERY_STRING</code> does not exist"
 fi
 
-logger RasPiCam: $REMOTE_ADDR getting measurements with query string \"$QUERY_STRING\, requesting sensor $SENSOR"
+logger RasPiCam: $REMOTE_ADDR getting measurements with query string \"$QUERY_STRING\, requesting sensor $SENSOR. Requested size was $SIZE."
 
