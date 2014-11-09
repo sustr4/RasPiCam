@@ -35,7 +35,7 @@ EndPlotScript
 	rm -rf $TMPDIR
 else
 	echo -ne "Status: 404 Not Found\nContent-type: text/html\n\n"
-	echo "<h1>Error</h1> log file <code>$RASPICAM_RAW_MEASUREMENTS</code> does not exist"
+	echo "<h1>Error</h1> log file <code>$RASPICAM_RAW_MEASUREMENTS</code> as requested in your query <code>$QUERY_STRING</code> does not exist"
 fi
 
 logger RasPiCam: $REMOTE_ADDR getting measurements with query string \"$QUERY_STRING\, requesting sensor $SENSOR"
