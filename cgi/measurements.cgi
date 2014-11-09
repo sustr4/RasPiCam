@@ -9,7 +9,7 @@ printf "Cache-Control: no-cache, no-store, must-revalidate\nPragma: no-cache\nEx
 
 #Sensor from Query String
 SENSOR=`echo "$QUERY_STRING" | sed 's/sensor=\([^\\?^;]*\).*/\1/'`
-RASPICAM_RAW_MEASUREMENTS="$RASPICAM_RAW_DIR/$SENSOR"
+RASPICAM_RAW_MEASUREMENTS="$RASPICAM_RAW_DIR/$SENSOR.csv"
 
 if [ -f $RASPICAM_RAW_MEASUREMENTS ]; then
 
