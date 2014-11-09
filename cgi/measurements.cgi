@@ -20,8 +20,11 @@ if [ -f $RASPICAM_RAW_MEASUREMENTS ]; then
 	# Generate gnuplot input file
 cat << EndPlotScript > $TMPDIR/plot.in
 set terminal png size 800,600 enhanced font "Helvetica,14"
+set datafile separator ","
+set xdata time
+set timefmt "%Y%m%d_%H%M%S"
 set output "$TMPDIR/output.png"
-plot "$RASPICAM_RAW_MEASUREMENTS" $RASPICAM_PLOT_STYLE	
+plot "$RASPICAM_RAW_MEASUREMENTS" using 1:2 $RASPICAM_PLOT_STYLE	
 EndPlotScript
 
 	# Run gnuplot
