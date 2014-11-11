@@ -34,7 +34,7 @@ plot "$RASPICAM_RAW_MEASUREMENTS" using 1:2 $RASPICAM_PLOT_STYLE
 EndPlotScript
 
 	# Run gnuplot
-	gnuplot $TMPDIR/plot.in 2>&1 > $TMPDIR/gnuplot.err
+	gnuplot $TMPDIR/plot.in > $TMPDIR/gnuplot.err 2>&1
 
         RETVAL=$?
         if [ $RETVAL == 0 ] && [ -s $TMPDIR/output.png ]; then
@@ -45,7 +45,7 @@ EndPlotScript
                 echo -ne "Status: 404 Not Found\nContent-type: text/html\n\n"
                 printf "<h1>Error constructing chart</h1>\nConfig file was: <pre>"
                 cat $TMPDIR/plot.in
-                printf "</pre>Return value was: <b>$RETVAL</b>.\n<code>gnuplot</code> output was:<pre>"
+                printf "</pre>Return value was: <b>$RETVAL</b>.\n<P>\n<code>gnuplot</code> output was:<pre>"
 		cat $TMPDIR/gnuplot.err
 		printf "</pre>"
         fi
