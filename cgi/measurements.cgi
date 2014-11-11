@@ -34,11 +34,22 @@ plot "$RASPICAM_RAW_MEASUREMENTS" using 1:2 $RASPICAM_PLOT_STYLE
 EndPlotScript
 
 	# Run gnuplot
-	gnuplot $TMPDIR/plot.in
+	gnuplot $TMPDIR/plot.in 2>&1 > $TMPDIR/gnuplot.err
 
-	# Return image
-	echo -ne "Status: 200 OK\nContent-type: image/png\n\n"
-	cat $TMPDIR/output.png
+        RETVAL=$?
+        if [ $RETVAL == 0 ] && [ -s $TMPDIR/output.png ]; then
+                # Return image
+		echo -ne "Status: 200 OK\nContent-type: image/png\n\n"
+		cat $TMPDIR/output.png
+        else
+                echo -ne "Status: 404 Not Found\nContent-type: text/html\n\n"
+                printf "<h1>Error constructing chart</h1>\nConfig file was: <pre>"
+                cat $TMPDIR/plot.in
+                printf "</pre>Return value was: <b>$RETVAL</b>.\n<code>gnuplot</code> output was:<pre>"
+		cat $TMPDIR/gnuplot.err
+		printf "</pre>"
+        fi
+
 
 	# Remove temporary files
 	rm -rf $TMPDIR
