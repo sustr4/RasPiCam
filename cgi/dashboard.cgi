@@ -7,7 +7,7 @@ printf "Cache-Control: no-cache, no-store, must-revalidate\nPragma: no-cache\nEx
 printf "Status: 200 OK\nContent-type: text/html\n\n"
 
 #Construct Dashboard
-printf "<HTML>\n<TITLE>RasPiCam Dashboard</TITLE>\n<BODY>\n"
+printf "<!DOCTYPE HTML><HTML>\n<TITLE>RasPiCam Dashboard</TITLE>\n<BODY>\n"
 
 printf "<TABLE>\n"
 
