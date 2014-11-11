@@ -13,7 +13,10 @@ printf "<TABLE>\n"
 
 printf "<TR><TD>System time</TD><TD>$(date)</TD></TR>\n"
 
-printf "<TR><TD>Measurement history</TD><TD><IMG src=\"/cgi-bin/measurements.cgi\"></TD></TR>\n"
+for logfile in $RASPICAM_RAW_DIR/*.csv; do
+	LF="$(basename $logfile)"
+	printf "<TR><TD>Measurement history for $LF</TD><TD><IMG src=\"/cgi-bin/measurements.cgi?sensor=$LF\"></TD></TR>\n"
+done
 
 printf "<TR><TD>Camera view</TD><TD><IMG src=\"/cgi-bin/image.cgi\"></TD></TR>\n"
 
