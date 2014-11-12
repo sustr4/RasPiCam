@@ -15,7 +15,7 @@ printf "<TR><TD>System time</TD><TD>$(date)</TD></TR>\n"
 
 for logfile in $RASPICAM_RAW_DIR/*.csv; do
 	LF="$(basename $logfile .csv)"
-	printf "<TR><TD>History for $LF</TD><TD><IMG src=\"/cgi-bin/measurements.cgi?sensor=$LF?size=352x288?font=6\"><br>\n"
+	printf "<TR><TD>History for $LF</TD><TD><IMG src=\"/cgi-bin/measurements.cgi?sensor=$LF?size=352x288?font=6\" alt=\"Sensor data plot\"><br>\n"
 	printf "Other sizes: <A HREF=\"/cgi-bin/measurements.cgi?sensor=$LF?size=1024x576\">1024&times;576</a>\n"
 	printf "<A HREF=\"/cgi-bin/measurements.cgi?sensor=$LF?size=1280x720\">1280&times;720</a>\n"
 	printf "<A HREF=\"/cgi-bin/measurements.cgi?sensor=$LF?size=1600x900\">1600&times;900</a><P>"
@@ -23,7 +23,7 @@ for logfile in $RASPICAM_RAW_DIR/*.csv; do
 	printf "</TD></TR>\n"
 done
 
-printf "<TR><TD>Camera view</TD><TD><IMG src=\"/cgi-bin/image.cgi\"></TD></TR>\n"
+printf "<TR><TD>Camera view</TD><TD><IMG src=\"/cgi-bin/image.cgi\" alt=\"Current photo\"><BR><A HREF=\"/cgi-bin/image.cgi\">Direct link</A></TD></TR>\n"
 
 printf "</TABLE>\n"
 printf "</BODY>\n</HTML>\n"
