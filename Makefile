@@ -14,4 +14,11 @@ install:
 	-chown root:root /usr/lib/RasPiCam
 	install -o root -g root -m 775 lib/RasPiCamReader.sh /usr/lib/RasPiCam/RasPiCamReader.sh
 	install config/RasPiCam.conf /etc/apache2/conf.d/RasPiCam
+	if [ -e /usr/lib/Adafruit-Raspberry-Pi-Python-Code ]; then \
+		cd /usr/lib/Adafruit-Raspberry-Pi-Python-Code; \
+		git pull; \
+	else \
+		cd /usr/lib/; \
+		git clone https://github.com/adafruit/Adafruit-Raspberry-Pi-Python-Code.git; \
+	fi
 	service cron reload
