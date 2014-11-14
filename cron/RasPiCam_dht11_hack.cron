@@ -1,1 +1,1 @@
-0/5 0 0 0 0 root /usr/bin/printf "$(/bin/date +%Y%m%d_%H%M%S),$(/usr/bin/printf "import Adafruit_DHT\nprint Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, 18)[0]" | sudo /usr/bin/python)%%" >> "/var/lib/RasPiCam/DHT_GPIO18.csv"
+*/5 * * * * root /usr/bin/printf "$(/bin/date +%Y%m%d_%H%M%S),$(/usr/bin/printf "import Adafruit_DHT\nprint Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, 18)[0]" | sudo /usr/bin/python)%%" >> "/var/lib/RasPiCam/DHT_GPIO18.csv"
