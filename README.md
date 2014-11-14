@@ -15,15 +15,21 @@ Dependencies
 
 These packages must be installed for all features to work properly:
 
-`apt-get install -y apache2 gnuplot vgrabbj`
+`apt-get install -y apache2 gnuplot vgrabbj build-essential python-dev`
 
+It also uses [DHT scripts from Adafruit](https://github.com/adafruit/Adafruit_Python_DHT). Install as follows:
+
+```git clone https://github.com/adafruit/Adafruit_Python_DHT
+cd Adafruit_Python_DHT
+sudo python setup.py install
+```
 
 Important notes
 ---------------
 
-user `www-data` must be member of group `video` if you wish to download pictures from your WebCam:
+user `www-data` must be member of groups `video` if you wish to download pictures from your WebCam, and group `kmem` if you need to use Adafruit DHT:
 
-`sudo usermod -a -G video www-data`
-
-`sudo service apache2 restart`
+```sudo usermod -a -G video www-data
+sudo usermod -a -G kmem www-data
+sudo service apache2 restart```
 

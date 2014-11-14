@@ -20,3 +20,15 @@ for sensor in /sys/bus/w1/devices/[0-9]*; do
 	printf "$TIMESTAMP,$TEMPERATURE\n" >> "$MDIR/$SN.csv"
 done
 
+
+# -------------------------------
+# DHT modules, read with AdaFruit
+# -------------------------------
+
+#for port in $(grep RASPICAM_DHT11_GPIO /etc/apache2/conf.d/RasPiCam.conf | awk '{ print $3 }'); do
+#	HUMIDITY=printf "import Adafruit_DHT\nprint Adafruit_DHT.read_retry(Adafruit_DHT.DHT11, $port)[0]" | python
+#	printf "$TIMESTAMP,$HUMIDITY\n" >> "$MDIR/DHT_GPIO$port.csv"
+#done
+
+## Currently AdaFruid sadly requires root privileges. As a dirty hack, values are collected by a separate cron script
+
