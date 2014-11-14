@@ -10,6 +10,7 @@ install:
 	install -o www-data -g www-data -m 775 cgi/image.cgi /usr/lib/cgi-bin/image.cgi
 	install -o www-data -g www-data -m 775 cgi/dashboard.cgi /usr/lib/cgi-bin/dashboard.cgi
 	install -o root -g root -m 644 cron/RasPiCam.cron /etc/cron.d/RasPiCam
+	install -o root -g root -m 644 cron/cron/RasPiCam_dht11_hack.cron /etc/cron.d/cron/RasPiCam_dht11_hack
 	-mkdir -p /usr/lib/RasPiCam
 	-chown root:root /usr/lib/RasPiCam
 	install -o root -g root -m 775 lib/RasPiCamReader.sh /usr/lib/RasPiCam/RasPiCamReader.sh
