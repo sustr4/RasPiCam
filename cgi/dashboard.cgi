@@ -20,6 +20,7 @@ for logfile in $RASPICAM_RAW_DIR/*.csv; do
 	printf "<A HREF=\"/cgi-bin/measurements.cgi?sensor=$LF?size=1280x720\">1280&times;720</a>\n"
 	printf "<A HREF=\"/cgi-bin/measurements.cgi?sensor=$LF?size=1600x900\">1600&times;900</a><P>"
 	printf "Download <A HREF=\"/cgi-bin/measurements_raw.cgi?sensor=$LF\">raw data</a><P>"
+	printf "Last update: $(stat -c%y $logfile)<P>"
 	printf "</TD></TR>\n"
 done
 
