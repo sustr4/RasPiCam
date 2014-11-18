@@ -34,7 +34,7 @@ set datafile separator ","
 set xdata time
 set timefmt "%Y%m%d_%H%M%S"
 set output "$TMPDIR/output.png"
-plot "< tail -n 20160 $RASPICAM_RAW_MEASUREMENTS" using 1:2 $RASPICAM_PLOT_STYLE	
+plot "< tail -n 4032 $RASPICAM_RAW_MEASUREMENTS" using 1:2 $RASPICAM_PLOT_STYLE	
 EndPlotScript
 
 	# Run gnuplot
