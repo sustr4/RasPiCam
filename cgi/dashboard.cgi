@@ -14,7 +14,7 @@ printf "System time: $(date)\n<HR>\n<div>\n"
 for logfile in $RASPICAM_RAW_DIR/*.csv; do
 	LF="$(basename $logfile .csv)"
 	printf "<TABLE style=\"float: left; margin:20px; align:center;\">\n"
-	printf "<TR><TD align=\"center\">History for $LF<P><IMG src=\"/cgi-bin/measurements.cgi?sensor=$LF?size=352x288?font=6\" alt=\"Sensor data plot\"><br>\n"
+	printf "<TR><TD align=\"center\">Last two weeks at $LF<P><IMG src=\"/cgi-bin/measurements.cgi?sensor=$LF?size=352x288?font=6\" alt=\"Sensor data plot\"><br>\n"
 	printf "Other sizes: <A HREF=\"/cgi-bin/measurements.cgi?sensor=$LF?size=1024x576\">1024&times;576</a>\n"
 	printf "<A HREF=\"/cgi-bin/measurements.cgi?sensor=$LF?size=1280x720\">1280&times;720</a>\n"
 	printf "<A HREF=\"/cgi-bin/measurements.cgi?sensor=$LF?size=1600x900\">1600&times;900</a><P>"
