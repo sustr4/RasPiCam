@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Load Human Readable names
+
+IDS=$(grep -vE "^\s*#" /etc/apache2/conf.d/RasPiCam.conf | grep -w RASPICAM_SENSOR_IDS | awk '{ print $3 }' | tr ";" "\n")
+NAMES=$(grep -vE "^\s*#" /etc/apache2/conf.d/RasPiCam.conf | grep -w RASPICAM_SENSOR_NAMES | awk '{ print $3 }' | tr ";" "\n")
+COLORS=$(grep -vE "^\s*#" /etc/apache2/conf.d/RasPiCam.conf | grep -w RASPICAM_SENSOR_COLORS | awk '{ print $3 }' | tr ";" "\n")
+
 #Prevent caching
 printf "Cache-Control: no-cache, no-store, must-revalidate\nPragma: no-cache\nExpires: 0\n"
 
@@ -10,6 +16,11 @@ printf "Status: 200 OK\nContent-type: text/html\n\n"
 printf "<!DOCTYPE HTML><HTML>\n<TITLE>RasPiCam Dashboard</TITLE>\n<BODY>\n"
 
 printf "System time: $(date)\n<HR>\n<div>\n"
+
+for i in $IDS; do
+	printf "ID: $i\n"
+done
+
 
 for logfile in $RASPICAM_RAW_DIR/*.csv; do
 	LF="$(basename $logfile .csv)"
