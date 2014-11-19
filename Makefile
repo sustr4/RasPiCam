@@ -16,7 +16,7 @@ install:
 	install -o root -g root -m 775 lib/RasPiCamReader.sh /usr/lib/RasPiCam/RasPiCamReader.sh
 	install -o root -g root -m 775 lib/RasPiCam_dht11_hack.sh /usr/lib/RasPiCam_dht11_hack.sh
 	if [ ! -e /etc/apache2/conf.d/RasPiCam ]; then \
-		install config/RasPiCam.conf /etc/apache2/conf.d/RasPiCam \
+		install config/RasPiCam.conf /etc/apache2/conf.d/RasPiCam; \
 	fi
 	if [ -e /usr/lib/Adafruit-Raspberry-Pi-Python-Code ]; then \
 		cd /usr/lib/Adafruit-Raspberry-Pi-Python-Code; \
